@@ -4,15 +4,74 @@ Shell的名字 $0
 第n个参数 $n
 所有参数 $@ 或 $*
 参数个数 $#
-fi是if的终止语句
-done是do的终止语句
+array语句例子：
+arr=(James Tom Richard);
+echo They are ${arr[@]}
+echo They are ${arr[@]:0:2} and ${arr[2]}
+echo replace the 3rd person to Jhon
+arr[2]=hhh
+echo ${arr[@]}
+echo There are ${#arr[@]} person
 
-if语法
+
+if语法列子：（fi是if的终止语句）
 if 条件; then
   command1
 else
   command2
 fi
+
+for语句列子：
+for i in Java python js html;
+do
+        echo $i
+done
+
+for (( i=0; i<100; i++ ))
+do
+	if test $[i%2] -gt 0
+	then
+		continue
+	else
+		echo $i
+	fi
+done
+
+
+
+while语句列子：
+while :
+do
+	echo 'Input from 5 to 10'
+	read num
+	case $num in
+		5|6|7|8|9|10)	echo You input $num;;
+		*)		echo Illegal arg, over.
+				break;;
+	esac
+done	
+
+case语句：（case语句以 esac 结束）
+echo Input 1, 2, 3
+read num
+case $num in
+	1) echo 1st;;
+	2) echo 2nd;;
+	3) echo 3rd;;
+	*) echo Illegal arg;;
+esac	
+
+
+
+
+在if条件中常见的括号有三种：(())、[]、[[]]，区别如下：
+  1.(())只能进行整数比较，不能用于字符串比较，括号中的变量可以省略$符号前缀，当然也可以带着。
+  本质上，[]和test是等价的，都是命令，而[[]]是关键字，所以重定向等字符在[]中会被认为成重定向，而在[[]]中是比较符号的意思。
+  2.&&、||、<和> 操作符能够正常存在于[[]]条件判断结构中，但是如果出现在[]结构中的话，会报错。
+    比如可以直接使用if [[ $a != 1 && $a != 2 ]], 如果不使用双括号, 则为if [ $a != 1] && [ $a != 2 ]或者if [ $a != 1 -a $a != 2 ]
+  3.[[]]支持字符串的模式匹配，[]不支持。使用=或==进行字符串比较，等号右边的可以作为一个模式，比如[[ "hello" == hell? ]]为真。模式匹配不能加引号，否则会作为固定字符串，如[[ "hello" == "hell?" ]]为假。
+  4.[[]]支持算术扩展，而[]不支持。如if [[ 1+2 -eq 3 ]]，而if [ 1+2 -eq 3 ]则会报错。
+  
 
 多条件比较
 -a	并且
