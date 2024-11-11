@@ -7,6 +7,20 @@ Shell的名字 $0
 fi是if的终止语句
 done是do的终止语句
 
+if语法
+if 条件; then
+  command1
+else
+  command2
+fi
+
+多条件比较
+-a	并且
+-o	或者
+
+=用作赋值时，两边绝对不能有空格 
+= ==等用作比较判断时，两边必须有空格；中括号前后一定要加空格
+
 1、 break
 break语句用于从for、while、until或select循环中退出、停止循环的执行。
 语法：
