@@ -1,0 +1,21 @@
+Shell的名字 $0
+第一个参数 $1
+第二个参数 $2
+第n个参数 $n
+所有参数 $@ 或 $*
+参数个数 $#
+fi是if的终止语句
+done是do的终止语句
+
+1、 break
+break语句用于从for、while、until或select循环中退出、停止循环的执行。
+语法：
+break [n]
+n代表嵌套循环的层级，如果指定了n，break将退出n级嵌套循环。
+
+2、continue
+continue语句用于跳过循环体中剩余的命令直接跳转到循环体的顶部，而重新开始循环的下一次重 复。
+continue语句可以应用于for、while或until循环。
+语法：
+continue [n]
+一句话总结：跳到当前循环体顶部，重新开始循环
